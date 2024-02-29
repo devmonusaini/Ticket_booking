@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+		<script
+			src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+			type="application/javascript"
+		></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+		<link rel="stylesheet" href="script.css" />
+		<style>
+			.bordered {
+				border-radius: 2px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mainContainer">
+			<script src="app.js" type="module"></script>
+
+			<div id="loginMenu">
+				<div
+					style="
+						width: 95%;
+						height: 66px;
+						left: 0;
+						padding: 40px 46px;
+						position: fixed;
+						right: 0;
+						top: 0;
+						z-index: 110;
+					"
+				>
+					<div
+						style="
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+						"
+					>
+						<img src="./img/logo.png" alt="logo" />
+
+						<button id="login" role="button" class="button-24">
+							<span class="inline-block"> Login </span>
+						</button>
+					</div>
+				</div>
+
+				<div
+					style="
+						width: 1600px;
+						margin-top: 250px;
+						display: grid;
+						grid-template-columns: 520px auto;
+					"
+				>
+					<div style="padding-left: 50px">
+						<div style="margin-top: 20px" aria-level="2">
+							<h1
+								style="
+									display: block;
+									text-align: start;
+									width: 100%;
+									translate: none;
+									rotate: none;
+									scale: none;
+									transform-origin: 121.558px 27px 0px;
+									transform: translate(0px, 0%);
+									opacity: 1;
+									text-transform: capitalize;
+									font-size: 70px;
+									font-family: sans-serif;
+									font-weight: 600;
+									font-family: sans-serif;
+									background: -webkit-linear-gradient(#fac552, #f0a500);
+									-webkit-background-clip: text;
+									-webkit-text-fill-color: transparent;
+								"
+							>
+								Booking <br />
+								For<br />
+								Airlines
+							</h1>
+						</div>
+						<div>
+							<a class="anchor" href="contact.html"
+								><i class="fa fa-phone"></i>Contact Us Now</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Admin Menu Page  -->
+			<div id="adminMenu">
+				<div>
+					<h1>Ticket Booking System For Admin</h1>
+
+					<div
+						class=""
+						style="
+							background-color: #f4e5d856;
+							color: black;
+							padding: 20px;
+							border-radius: 5px;
+							text-align: left;
+							height: 40px;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							margin-bottom: 20px;
+							box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+						"
+					>
+						<div class="">
+							<button
+								class="tablinks button-24 active"
+								role="button"
+								onclick="openAdminTabs(event, 'a-tab1')"
+							>
+								Assign Seat
+							</button>
+							<button
+								class="tablinks button-24"
+								role="button"
+								onclick="openAdminTabs(event, 'a-tab2')"
+							>
+								Assign Flight
+							</button>
+							<button
+								class="tablinks button-24"
+								role="button"
+								onclick="openAdminTabs(event, 'a-tab3')"
+							>
+								Transfer Ownership
+							</button>
+							<button
+								class="tablinks button-24"
+								role="button"
+								onclick="openAdminTabs(event, 'a-tab4')"
+							>
+								Check User Details
+							</button>
+							<span>Total Count : <span id="totalTickets1">0</span></span>
+						</div>
+						<div class="">
+							<button class="tablink button-24" role="button" id="admin-logout">
+								Logout
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="mainPanel" class="container">
+					<div id="a-tab1" class="adminTabContent">
+						<h2>Assign Seat Number</h2>
+
+						<div class="input-group">
+							<input
+								type="number"
+								id="assignSeatTicketNoInput"
+								placeholder="User ticket number"
+							/>
+							<br />
+							<input
+								type="number"
+								id="assignSeatNoInput"
+								placeholder="Seat number"
+							/>
+						</div>
+						<div class="button-container">
+							<button class="button-24" role="button" id="assignSeatButton">
+								Submit
+							</button>
+						</div>
+					</div>
+
+					<div id="a-tab2" class="adminTabContent" style="display: none">
+						<h2>Assign Flight Number</h2>
+
+						<div class="input-group">
+							<input
+								type="number"
+								id="assignSpaceshipTicketNoInput"
+								placeholder="User ticket number"
+							/>
+							<br />
+							<input
+								type="number"
+								id="assignSpaceshipNoInput"
+								placeholder="Seat number"
+							/>
+						</div>
+						<div class="button-container">
+							<button
+								class="button-24"
+								role="button"
+								id="assignSpaceshipButton"
+							>
+								Submit
+							</button>
+						</div>
+					</div>
+
+					<div
+						class="ownerFun adminTabContent"
+						id="a-tab3"
+						style="display: none"
+					>
+						<h2>Transfer ownership</h2>
+						<div class="input-group">
+							<input
+								type="text"
+								id="transferOwnershipInput"
+								placeholder="New Wallet Address"
+							/>
+						</div>
+						<div class="button-container">
+							<button
+								class="button-24"
+								role="button"
+								id="transferOwnershipButton"
+							>
+								Submit
+							</button>
+						</div>
+					</div>
+
+					<div id="a-tab4" class="adminTabContent" style="display: none">
+						<h2>Get Ticket Details</h2>
+						<div class="input-group">
+							<h3>Ticket Number</h3>
+							<input
+								type="number"
+								id="ticketNoInput1"
+								placeholder="Your ticket number"
+							/>
+						</div>
+						<div style="margin-top: 10px">
+							<button class="button-24" role="button" id="getDetailsButton1">
+								Submit
+							</button>
+						</div>
+						<div class="input-group">
+							<p>User Address : <span id="user-address1"></span></p>
+							<p>Name : <span id="user-name1"></span></p>
+							<p>Age : <span id="user-age1"></span></p>
+							<p>Gender : <span id="user-gender1"></span></p>
+							<p>Country : <span id="user-country1"></span></p>
+							<p>Sales Price : <span id="user-price1"></span></p>
+							<p>Travel Date : <span id="user-date1"></span></p>
+							<p>Travel Duration : <span id="user-duration1"></span></p>
+							<p>Seat Number : <span id="user-seat-number1"></span></p>
+							<p>Flight Number : <span id="user-spaceship1"></span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Customer Menu Page  -->
+			<div id="customerMenu">
+				<div>
+					<h1>Ticket Booking System For Customer</h1>
+
+					<div
+						class=""
+						style="
+							background-color: #f4e5d856;
+							color: black;
+							padding: 20px;
+							border-radius: 5px;
+							text-align: left;
+							height: 40px;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							margin-bottom: 20px;
+							box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+						"
+					>
+						<div>
+							<button
+								class="tablinks button-24 active"
+								role="button"
+								onclick="openCustomerTabs(event, 'c-tab1')"
+							>
+								Book a Ticket
+							</button>
+							<button
+								class="tablinks button-24"
+								role="button"
+								onclick="openCustomerTabs(event, 'c-tab2')"
+							>
+								Get Ticket Details
+							</button>
+							<button
+								class="tablinks button-24"
+								role="button"
+								onclick="openCustomerTabs(event, 'c-tab3')"
+							>
+								Check Balance
+							</button>
+
+							<span>Total Count : <span id="totalTickets2">0</span></span>
+						</div>
+						<div class="">
+							<button
+								class="tablink button-24"
+								role="button"
+								id="customer-logout"
+							>
+								Logout
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="mainPanel" class="container">
+					<div id="c-tab1" class="customerTabContent">
+						<h2>Book A Ticket</h2>
+						<div class="input-group">
+							<h3>Your Name</h3>
+							<input type="text" id="usernameInput" placeholder="Your name" />
+						</div>
+						<div class="input-group">
+							<h3>Age</h3>
+							<input type="number" id="ageInput" placeholder="Your age" />
+						</div>
+						<div class="input-group">
+							<div class="Gender">
+								<h3>Gender</h3>
+								<select id="genderSelect">
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="input-group">
+							<div class="Country">
+								<h3>Country</h3>
+								<select id="countrySelect">
+									<option value="USA">United States</option>
+									<option value="SIN">Singapore</option>
+									<option value="CAN">Canada</option>
+									<option value="GBR">United Kingdom</option>
+									<option value="FRA">France</option>
+									<option value="GER">Germany</option>
+									<option value="AUS">Australia</option>
+									<option value="JPN">Japan</option>
+									<option value="CHN">China</option>
+									<option value="IND">India</option>
+									<option value="BRA">Brazil</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="input-group">
+							<h3>Select Date</h3>
+							<input type="date" id="dateInput" />
+						</div>
+
+						<div class="input-group">
+							<br />
+							<button class="button-24" role="button" id="bookNow">
+								Book Now
+							</button>
+							<br />
+							<small>Pay <span id="price">0.0</span> ETH Fee</small>
+						</div>
+					</div>
+
+					<div id="c-tab2" class="customerTabContent" style="display: none">
+						<h2>Get Ticket Details</h2>
+						<div class="input-group">
+							<h3>Ticket Number</h3>
+							<input
+								type="number"
+								id="ticketNoInput2"
+								placeholder="Your ticket number"
+							/>
+						</div>
+						<div style="margin-top: 10px">
+							<button class="button-24" role="button" id="getDetailsButton2">
+								Submit
+							</button>
+						</div>
+						<div class="input-group">
+							<p>User Address : <span id="user-address2"></span></p>
+							<p>Name : <span id="user-name2"></span></p>
+							<p>Age : <span id="user-age2"></span></p>
+							<p>Gender : <span id="user-gender2"></span></p>
+							<p>Country : <span id="user-country2"></span></p>
+							<p>Sales Price : <span id="user-price2"></span></p>
+							<p>Travel Date : <span id="user-date2"></span></p>
+							<p>Travel Duration : <span id="user-duration2"></span></p>
+							<p>Seat Number : <span id="user-seat-number2"></span></p>
+							<p>Flight Number : <span id="user-spaceship2"></span></p>
+						</div>
+					</div>
+
+					<div
+						class="ownerFun customerTabContent"
+						id="c-tab3"
+						style="display: none"
+					>
+						<div class="input-group">
+							<h3>Check Balance</h3>
+							<input
+								type="text"
+								id="newWalletInput"
+								placeholder="New Wallet Address"
+							/>
+						</div>
+						<p id="userBalance"></p>
+						<div class="button-container">
+							<button class="button-24" role="button" id="checkBalanceButton">
+								Submit
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="bg-imgslide">
+			<img
+				name="slide"
+				src="img/Laxmi-Hero-Banner/Hero-Banner-1.jpg"
+				alt="slideImg"
+			/>
+		</div>
+
+		<script>
+			function openAdminTabs(evt, cityName) {
+				var i, adminTabContent, tablinks;
+				adminTabContent = document.getElementsByClassName("adminTabContent");
+				for (i = 0; i < adminTabContent.length; i++) {
+					adminTabContent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(cityName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+
+			function openCustomerTabs(evt, cityName) {
+				var i, customerTabContent, tablinks;
+				customerTabContent =
+					document.getElementsByClassName("customerTabContent");
+				for (i = 0; i < customerTabContent.length; i++) {
+					customerTabContent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(cityName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+		</script>
+		<script>
+			var i = 0;
+			var images = [];
+			var time = 4000;
+
+			images[0] = "./img/Laxmi-Hero-Banner/Hero-Banner-1.jpg";
+			images[1] = "./img/Laxmi-Hero-Banner/Hero-Banner-2.jpg";
+			images[2] = "./img/Laxmi-Hero-Banner/Hero-Banner-3.jpg";
+			images[3] = "./img/Laxmi-Hero-Banner/Hero-Banner-4.jpg";
+			images[4] = "./img/Laxmi-Hero-Banner/Hero-Banner-5.jpg";
+			images[5] = "./img/Laxmi-Hero-Banner/Hero-Banner-6.jpg";
+			images[6] = "./img/Laxmi-Hero-Banner/Hero-Banner-7.jpg";
+			function changeImg() {
+				document.slide.src = images[i];
+				if (i < images.length - 1) {
+					i++;
+				} else {
+					i = 0;
+				}
+
+				// for(var j=0; j=1; j+=2){
+				//     for(var k=0; k<=images.length-1; k++){
+				//         document.slide.src=images[k];
+				//     }
+				// }
+
+				setTimeout("changeImg()", time);
+			}
+			window.onload = changeImg();
+		</script>
+
+		`
+	</body>
+</html>
