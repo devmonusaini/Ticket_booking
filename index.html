@@ -129,7 +129,7 @@
 								role="button"
 								onclick="openAdminTabs(event, 'a-tab2')"
 							>
-								Assign Spaceship
+								Assign Flight
 							</button>
 							<button
 								class="tablinks button-24"
@@ -158,55 +158,50 @@
 				<div id="mainPanel" class="container">
 					<div id="a-tab1" class="adminTabContent">
 						<h2>Assign Seat Number</h2>
-						<div class="ownerBox">
-							<div class="input-group">
-								<h3>Assign Seat Number</h3>
-								<input
-									type="number"
-									id="assignSeatTicketNoInput"
-									placeholder="User ticket number"
-								/>
-								<br />
-								<input
-									type="number"
-									id="assignSeatNoInput"
-									placeholder="Seat number"
-								/>
-							</div>
-							<div class="button-container">
-								<button class="button-24" role="button" id="assignSeatButton">
-									Submit
-								</button>
-							</div>
+						<div class="input-group">
+							<input
+								type="number"
+								id="assignSeatTicketNoInput"
+								placeholder="User ticket number"
+							/>
+							<br />
+							<input
+								type="number"
+								id="assignSeatNoInput"
+								placeholder="Seat number"
+							/>
+						</div>
+						<div class="button-container">
+							<button class="button-24" role="button" id="assignSeatButton">
+								Submit
+							</button>
 						</div>
 					</div>
 
 					<div id="a-tab2" class="adminTabContent" style="display: none">
-						<h2>Assign Spaceship Number</h2>
-						<div class="ownerBox">
-							<div class="input-group">
-								<h3>Assign Spaceship Number</h3>
-								<input
-									type="number"
-									id="assignSpaceshipTicketNoInput"
-									placeholder="User ticket number"
-								/>
-								<br />
-								<input
-									type="number"
-									id="assignSpaceshipNoInput"
-									placeholder="Seat number"
-								/>
-							</div>
-							<div class="button-container">
-								<button
-									class="button-24"
-									role="button"
-									id="assignSpaceshipButton"
-								>
-									Submit
-								</button>
-							</div>
+						<h2>Assign Flight Number</h2>
+
+						<div class="input-group">
+							<input
+								type="number"
+								id="assignSpaceshipTicketNoInput"
+								placeholder="User ticket number"
+							/>
+							<br />
+							<input
+								type="number"
+								id="assignSpaceshipNoInput"
+								placeholder="Flight number"
+							/>
+						</div>
+						<div class="button-container">
+							<button
+								class="button-24"
+								role="button"
+								id="assignSpaceshipButton"
+							>
+								Submit
+							</button>
 						</div>
 					</div>
 
@@ -216,24 +211,21 @@
 						style="display: none"
 					>
 						<h2>Transfer ownership</h2>
-						<div class="ownerBox">
-							<div class="input-group">
-								<h3>Transfer ownership</h3>
-								<input
-									type="text"
-									id="transferOwnershipInput"
-									placeholder="New Wallet Address"
-								/>
-							</div>
-							<div class="button-container">
-								<button
-									class="button-24"
-									role="button"
-									id="transferOwnershipButton"
-								>
-									Submit
-								</button>
-							</div>
+						<div class="input-group">
+							<input
+								type="text"
+								id="transferOwnershipInput"
+								placeholder="New Wallet Address"
+							/>
+						</div>
+						<div class="button-container">
+							<button
+								class="button-24"
+								role="button"
+								id="transferOwnershipButton"
+							>
+								Submit
+							</button>
 						</div>
 					</div>
 
@@ -258,11 +250,11 @@
 							<p>Age : <span id="user-age1"></span></p>
 							<p>Gender : <span id="user-gender1"></span></p>
 							<p>Country : <span id="user-country1"></span></p>
-							<p>Sales Price : <span id="user-price1"></span></p>
+							<p>Ticket Price : <span id="user-price1"></span></p>
 							<p>Travel Date : <span id="user-date1"></span></p>
 							<p>Travel Duration : <span id="user-duration1"></span></p>
 							<p>Seat Number : <span id="user-seat-number1"></span></p>
-							<p>Spaceship Number : <span id="user-spaceship1"></span></p>
+							<p>Flight Number : <span id="user-spaceship1"></span></p>
 						</div>
 					</div>
 				</div>

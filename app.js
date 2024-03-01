@@ -163,7 +163,7 @@ document
 				// Wait for the transaction to be confirmed
 				await tx.wait();
 				// Display a success message
-				alert("Assign Spaceship Successfully!");
+				alert("Assign Flight Successfully!");
 			} else {
 				alert("Invalid data!");
 			}
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			document.getElementById("user-age1").innerText = ticketDetails[2];
 			document.getElementById("user-gender1").innerText = ticketDetails[3];
 			document.getElementById("user-country1").innerText = ticketDetails[4];
-			document.getElementById("user-price1").innerText = "4,50,000 USD";
+			document.getElementById("user-price1").innerText = "2.96 USD";
 			// ticketDetails[5] / 10 ** 18 + " ETH";
 
 			// Convert to milliseconds by multiplying by 1000
